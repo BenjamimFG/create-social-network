@@ -15,13 +15,13 @@ services:
     container_name: social-network-api
     restart: always
     environment:
-      - "PORT=${PORT}"
-      - "FRONTEND_URL=${FRONTEND_URL}"
-      - "MONGO_URL=${MONGO_URL}"
-      - "SECRET=${SECRET}"
-      - "CLOUDINARY_CLOUD_NAME=${CLOUDINARY_CLOUD_NAME}"
-      - "CLOUDINARY_API_KEY=${CLOUDINARY_API_KEY}"
-      - "CLOUDINARY_SECRET=${CLOUDINARY_SECRET}"
+      - PORT=${PORT}
+      - FRONTEND_URL=${FRONTEND_URL}
+      - MONGO_URL=${MONGO_URL}
+      - SECRET=${SECRET}
+      - CLOUDINARY_CLOUD_NAME=${CLOUDINARY_CLOUD_NAME}
+      - CLOUDINARY_API_KEY=${CLOUDINARY_API_KEY}
+      - CLOUDINARY_SECRET=${CLOUDINARY_SECRET}
     ports:
       - 4000:4000
     depends_on:
