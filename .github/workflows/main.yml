@@ -47,4 +47,4 @@ jobs:
           cd ..
       
       - name: Deploy using docker compose
-        run: docker-compose up -d
+        run: docker-compose up -d --build
