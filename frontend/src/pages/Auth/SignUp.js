@@ -136,7 +136,7 @@ const SignUp = ({ history, refetch }) => {
 
       <Form>
         <Spacing bottom="md">
-          <H1>Create Account</H1>
+          <H1>Criar Conta</H1>
         </Spacing>
 
         <form onSubmit={(e) => handleSubmit(e, signup)}>
