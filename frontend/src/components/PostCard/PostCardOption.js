@@ -49,9 +49,12 @@ const PostCardOption = ({ postId, author, closeOption, deletePost }) => {
   const copyToClipboard = () => {
     try {
       navigator.clipboard.writeText(
-        `${process.env.REACT_APP_FRONTEND_URL}${generatePath(Routes.POST, {
-          id: postId,
-        })}`
+        `${typeof window !== 'undefined' ? window.location.protocol + '//' + window.location.host : ''}${generatePath(
+          Routes.POST,
+          {
+            id: postId,
+          }
+        )}`
       );
     } catch (error) {
       console.error('Failed to read clipboard contents: ', error);

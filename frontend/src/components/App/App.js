@@ -57,7 +57,8 @@ const App = () => {
 
         // Attach new notifications to authUser
         const authUser = prev.getAuthUser;
-        authUser.newNotifications = newNotifications;
+        authUser.newNotifications.splice(0, authUser.newNotifications.length);
+        newNotifications.forEach((n) => authUser.newNotifications.push(n));
 
         return { getAuthUser: authUser };
       },
