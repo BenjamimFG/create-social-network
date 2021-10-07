@@ -33,7 +33,8 @@ jobs:
         run: |
           cd api
           npm i && \
-          npm run test --if-present
+          npm run test --if-present && \
+          sed -i '/"type": "module"/d' package.json && \
           cd ..
 
       # Runs a set of commands using the runners shell
