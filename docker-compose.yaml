@@ -2,18 +2,14 @@ version: "3.9"
 
 services:
   web:
-    build: frontend
-    container_name: social-network-frontend
-    restart: always
-    ports: 
+    image: benjamimunifor/create-social-network-web:latest
+    ports:
       - 80:3000
     depends_on:
       - api
 
   api:
-    build: api
-    container_name: social-network-api
-    restart: always
+    image: benjamimunifor/create-social-network-api:latest
     environment:
       - PORT=${PORT}
       - FRONTEND_URL=${FRONTEND_URL}
@@ -27,16 +23,17 @@ services:
     depends_on:
       - api-db
     networks:
-      - social-network  
+      - social-network
 
   api-db:
     image: mongo:5.0.3
-    container_name: social-network-db
-    restart: always
     volumes:
       - /data/social-network:/data/db
     networks:
       - social-network
+    deploy:
+      placement:
+        constraints: [node.hostname == arch]
 
 networks:
   social-network:
