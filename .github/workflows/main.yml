@@ -45,8 +45,16 @@ jobs:
           npm run test --if-present
           cd ..
       
-      - name: Deploy using docker compose
+      - name: Build docker images
         run: |
-          docker-compose down && \
-          docker-compose build --no-cache && \
-          docker-compose up -d --force-recreate
+          docker build frontend --rm -t benjamimunifor/create-social-network-web:latest &&
+          docker build api --rm -t benjamimunifor/create-social-network-api:latest
+        
+      - name: Push images to docker hub
+        run: |
+          docker push benjamimunifor/create-social-network-web:latest &&
+          docker push benjamimunifor/create-social-network-api:latest
+      
+      - name: Deploy application to docker swarm
+        run: |
+          docker stack deploy -c docker-compose.yaml create-social-network
